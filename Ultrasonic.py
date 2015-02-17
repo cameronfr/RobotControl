@@ -8,12 +8,12 @@ class Ultrasonic:
 
     def __init__ (self, pin):
         #GPIO.setmode(GPIO.BCM)
-        setPin(pin);
+        self.setPin(pin);
 
-    def setPin(pin):
+    def setPin(self, pin):
         self.pinNumber = pin
 
-    def read:
+    def read(self):
         GPIO.setup(pinNumber, GPIO.OUT)
         GPIO.output(pinNumber, 0)
 
