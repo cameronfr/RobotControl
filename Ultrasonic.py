@@ -34,6 +34,7 @@ while 1:
                         endtime=time.time()
                         if (endtime-watchtime > timeout):
                                 goodread=False
+                                print "badread"
 
         if goodread:
                 duration=endtime-starttime
