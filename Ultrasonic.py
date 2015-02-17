@@ -5,6 +5,7 @@ GPIO.setmode(GPIO.BCM)
 
 timeout = 0.020
 
+
 while 1:
         GPIO.setup(23, GPIO.OUT)
         #cleanup output
