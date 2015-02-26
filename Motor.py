@@ -10,9 +10,9 @@ class Motor:
     def setPin(self, pin):
         self.pinNumber = pin
 
-    def initMotor(self,freq):
+    def initialize(self,freq):
         self.freq = freq
         self.servo.set_servo(self.pinNumber,freq)
 
-    def setMotor(self, speed):
+    def setSpeed(self, speed):
         self.servo.set_servo(self.pinNumber,self.freq+speed)
