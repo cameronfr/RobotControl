@@ -15,4 +15,4 @@ class Motor:
         self.servo.set_servo(self.pinNumber,freq)
 
     def setSpeed(self, speed):
-        self.servo.set_servo(self.pinNumber,self.freq+speed)
+        self.servo.set_servo(self.pinNumber,self.freq+round(speed,-1))
