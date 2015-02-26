@@ -1,4 +1,5 @@
 import RPIO.PWM as PWM
+import time
 
 class Motor:
 
@@ -13,6 +14,7 @@ class Motor:
     def initialize(self,freq):
         self.freq = freq
         self.servo.set_servo(self.pinNumber,freq)
+        time.sleep(0.10)
 
     def setSpeed(self, speed):
         self.servo.set_servo(self.pinNumber,self.freq+round(speed,-1))
