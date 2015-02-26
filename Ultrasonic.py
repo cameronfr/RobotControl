@@ -7,7 +7,7 @@ class Ultrasonic:
     TIMEOUT = 0.020
 
     def __init__ (self, pin):
-        self.setPin(pin);
+        self.setPin(pin)
 
     def setPin(self, pin):
         self.pinNumber = pin
@@ -40,3 +40,5 @@ class Ultrasonic:
                 duration=endTime-startTime
                 distance=duration*34000/2
                 return distance
+	else:
+		return 0
