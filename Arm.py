@@ -10,12 +10,14 @@ class Servo:
     ANGLEMAX = 180.0
     PWMFREQ = 60
 
-    def __init__(self, channel):
+    def __init__(self, channel, debug=False):
         Servo.pwm.setPWMFreq(Servo.PWMFREQ)
         self.channel = channel
+	self.debug = debug
 
     def setServoPulse(self, pulse):
-	print("call: pwm: channel:" + str(self.channel) + " pulse:" + str(pulse))	
+	if self.debug:
+	    print("call: pwm: channel:" + str(self.channel) + " pulse:" + str(pulse))	
         pulseLength = 1000000                   # 1,000,000 us per second
         pulseLength /= Servo.PWMFREQ                       # 60 Hz
         pulseLength /= 4096                     # 12 bits of resolution
@@ -29,10 +31,12 @@ class Servo:
     def moveToAngle(self, angle, reversed = False):
         if not reversed:
             self.setServoPulse(self.angleToPulse(angle))
-	    print("call: move: channel:" + str(self.channel) + " angle:" + str(angle)) 
+	    if self.debug:	    
+		print("call: move: channel:" + str(self.channel) + " angle:" + str(angle)) 
         else:
             self.setServoPulse(self.angleToPulse(self.reverseAngle(angle)))
-	    print("call: move: channel:" + str(self.channel) + " angle:" + str(self.reverseAngle(angle)))
+	    if self.debug:
+		print("call: move: channel:" + str(self.channel) + " angle:" + str(self.reverseAngle(angle)))
   
     def reverseAngle(self, angle):
         return (Servo.ANGLEMIN + (Servo.ANGLEMAX - angle))
