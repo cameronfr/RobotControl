@@ -17,21 +17,21 @@ def main():
     #for easy testing
     while (True):
         direction = raw_input("W, A, S, D, Q, E, G, R: ").lower();
-        if direction == "a":
+        if "a" in direction:
             currentHorizAngle = max(currentHorizAngle - 10,0);
-        elif direction == "d":
+        elif "d" in direction:
             currentHorizAngle = min(currentHorizAngle + 10,180);
-        if direction == "w":
+        if "w" in direction:
             currentVertAngle = min(currentVertAngle + 10,180);
-        elif direction == "s":
+        elif "s" in direction:
             currentVertAngle = max(currentVertAngle - 10,0);
-	if direction == "q":
+	if "q" in direction:
 	    currentElbowAngle = min(currentElbowAngle + 10, 180)
-	elif direction == "e":
+	elif "e" in direction:
 	    currentElbowAngle = max(currentElbowAngle - 10, 0)
-	if direction == "g":
+	if "g" in direction:
 	    currentClawAngle = min(currentClawAngle + 10, 180)
-	elif direction == "r":
+	elif "r" in direction:
 	    currentClawAngle = max(currentClawAngle - 10, 0)  
 
         horizJoint.moveToAngle(currentHorizAngle)
