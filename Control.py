@@ -4,10 +4,10 @@ import Arm
 import time
 
 def main():
-    horizJoint = Joint([0,1],[1,-1])
-    vertJoint = Joint([2,3],[1,-1])
-    elbowJoint = Joint([4],[1])
-    clawJoint = Joint([5,6],[1,-1])
+    horizJoint = Arm.Joint([Arm.Servo(0),Arm.Servo(1)],[1,-1])
+    vertJoint = Arm.Joint([Arm.Servo(2),Arm.Servo(3)],[1,-1])
+    elbowJoint = Arm.Joint([Arm.Servo(4)],[1])
+    clawJoint = Arm.Joint([Arm.Servo(5),Arm.Servo(6)],[1,-1])
 
     currentHorizAngle = 90;
     currentVertAngle = 90;
