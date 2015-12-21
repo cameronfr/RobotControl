@@ -30,7 +30,7 @@ class Servo:
             self.setServoPulse(self.channel,self.angleToPulse(angle))
 	    #print("call: channel:" + str(self.channel) + " angle:" + str(angle)) 
         else:
-            setServoPulse(self.channel,self.angleToPulse(self.reverseAngle(angle)))
+            self.setServoPulse(self.channel,self.angleToPulse(self.reverseAngle(angle)))
 	    #print("call: channel:" + str(self.channel) + " angle:" + str(self.reverseAngle(angle)))
   
     def reverseAngle(self, angle):
