@@ -11,28 +11,30 @@ class Servo:
     PWMFREQ = 60
 
     def __init__(self, channel):
-        pwm.setPWMFreq(PWMFREQ)
+        Servo.pwm.setPWMFreq(Servo.PWMFREQ)
         self.channel = channel
 
-    def setServoPulse(channel, pulse):
+    def setServoPulse(self, channel, pulse):
         pulseLength = 1000000                   # 1,000,000 us per second
-        pulseLength /= PWMFREQ                       # 60 Hz
+        pulseLength /= Servo.PWMFREQ                       # 60 Hz
         pulseLength /= 4096                     # 12 bits of resolution
         pulse /= pulseLength
         pulse = int(pulse)
-        pwm.setPWM(channel, 0, pulse)
+        Servo.pwm.setPWM(channel, 0, pulse)
 
-    def angleToPulse(angle):
-        return ((((angle-ANGLEMIN)/(ANGLEMAX-ANGLEMIN)) * (SERVOMAX-SERVOMIN)) + SERVOMIN)
+    def angleToPulse(self, angle):
+        return ((((angle-Servo.ANGLEMIN)/(Servo.ANGLEMAX-Servo.ANGLEMIN)) * (Servo.SERVOMAX-Servo.SERVOMIN)) + Servo.SERVOMIN)
 
-    def moveToAngle(angle, reversed = False):
+    def moveToAngle(self, angle, reversed = False):
         if not reversed:
             self.setServoPulse(self.channel,self.angleToPulse(angle))
+	    #print("call: channel:" + str(self.channel) + " angle:" + str(angle)) 
         else:
             setServoPulse(self.channel,self.angleToPulse(self.reverseAngle(angle)))
-
-    def reverseAngle(angle):
-        return (ANGLEMIN + (ANGLEMAX - angle))
+	    #print("call: channel:" + str(self.channel) + " angle:" + str(self.reverseAngle(angle)))
+  
+    def reverseAngle(self, angle):
+        return (Servo.ANGLEMIN + (Servo.ANGLEMAX - angle))
 
 class Joint:
 
@@ -42,10 +44,10 @@ class Joint:
         self.servoList = servoList
         self.directionList = directionList
 
-    def moveToAngle(angle)
-        for i in range(len(servoList)):
+    def moveToAngle(self, angle):
+        for i in range(len(self.servoList)):
             direction = self.directionList[i]
             if direction == -1:
-                servoList[i].moveToAngle(angle,True)
+                self.servoList[i].moveToAngle(angle,True)
             else:
-                servoList[i].moveToAngle(angle,False)
+                self.servoList[i].moveToAngle(angle,False)
