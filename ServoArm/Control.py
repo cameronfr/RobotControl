@@ -18,21 +18,21 @@ def main():
     while (True):
         direction = raw_input("W, A, S, D, Q, E, G, R: ").lower();
         if "a" in direction:
-            currentHorizAngle = max(currentHorizAngle - 10,0);
+            currentHorizAngle = max(currentHorizAngle - 10*direction.count('a'),0);
         elif "d" in direction:
-            currentHorizAngle = min(currentHorizAngle + 10,180);
+            currentHorizAngle = min(currentHorizAngle + 10*direction.count('d'),180);
         if "w" in direction:
-            currentVertAngle = min(currentVertAngle + 10,180);
+            currentVertAngle = min(currentVertAngle + 10*direction.count('w'),180);
         elif "s" in direction:
-            currentVertAngle = max(currentVertAngle - 10,0);
+            currentVertAngle = max(currentVertAngle - 10*direction.count('s'),0);
 	if "q" in direction:
-	    currentElbowAngle = min(currentElbowAngle + 10, 180)
+	    currentElbowAngle = min(currentElbowAngle + 10*direction.count('q'), 180)
 	elif "e" in direction:
-	    currentElbowAngle = max(currentElbowAngle - 10, 0)
+	    currentElbowAngle = max(currentElbowAngle - 10*direction.count('e'), 0)
 	if "g" in direction:
-	    currentClawAngle = min(currentClawAngle + 10, 180)
+	    currentClawAngle = min(currentClawAngle + 10*direction.count('g'), 180)
 	elif "r" in direction:
-	    currentClawAngle = max(currentClawAngle - 10, 0)  
+	    currentClawAngle = max(currentClawAngle - 10*direction.count('r'), 0)  
 
         horizJoint.moveToAngle(currentHorizAngle)
         vertJoint.moveToAngle(currentVertAngle)
